@@ -58,4 +58,24 @@ INSERT INTO pedidos (produto_id, quantidade, preco_total, tipo_entrega, endereco
 (2, 1, 6.00, 'retirada', NULL),
 (3, 2, 22.00, 'entrega', 'Rua das Flores, 123, Centro'),
 (1, 1, 10.00, 'entrega', 'Av. Principal, 456, Bairro Novo');
+UPDATE produtos
+SET preco = 7.50
+WHERE nome = 'Café Expresso';
+
+DELETE FROM produtos
+WHERE id = 3;
+
+SELECT * FROM produtos;
+
+SELECT * FROM pedidos
+WHERE tipo_entrega = 'entrega';
+
+SELECT
+    p.nome,
+    ped.quantidade,
+    ped.endereco_entrega,
+    ped.preco_total
+FROM pedidos ped
+JOIN produtos p ON ped.produto_id = p.id
+WHERE ped.tipo_entrega = 'entrega';
 
